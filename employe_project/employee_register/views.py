@@ -14,17 +14,17 @@ def employee_list(request):
 # if  handle the GET request ========================
 def employee_form(request,id=0):
     if request.method =='GET':
-        if id == 0:
-         form = EmployeeForm()
-        else: 
-            employeee = Employee.objects.get(pk=id)  #pk  primarykey
-            form = EmployeeForm(instance = employeee)
+            if id == 0:
+              form = EmployeeForm()
+            else: 
+               employeee = Employee.objects.get(pk=id)  #pk  primarykey
+               form = EmployeeForm(instance = employeee)
             
-        emp_form={
+            emp_form={
                'form':form
                 }
     
-        return render(request,'employee_form.html',emp_form)
+            return render(request,'employee_form.html',emp_form)
     
    # else  handle the POST request  =========================
     else:
@@ -40,5 +40,7 @@ def employee_form(request,id=0):
         return redirect('list/')
 
 # it used delecting employee record 
-def employee_delete(request):
-    return 
+def employee_delete(request, id):
+    employee = Employee.objects.get(pk=id)
+    employee.delete()
+    return redirect('employe_list')
