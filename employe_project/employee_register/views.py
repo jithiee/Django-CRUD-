@@ -37,7 +37,7 @@ def employee_form(request,id=0):
             form = EmployeeForm(request.POST,instance =  employeee)
         if form.is_valid():
              form.save()
-        return redirect('list/')
+        return redirect('employe_list')
 
 # it used delecting employee record 
 def employee_delete(request, id):

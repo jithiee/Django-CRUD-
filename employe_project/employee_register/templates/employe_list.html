@@ -1,6 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<style>
+   .add {
+      background-color: green;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+   
+    }
+
+</style>
+
+
+
+
 <table class='table table-borderless'>
   <thead class='border-bottom font-weight-bold'>
    <tr>
@@ -13,6 +29,9 @@
    </tr>
   </thead>
   <tbody>
+    
+   <a  href="{%url 'employee_insert' %} "  class="add" >  <button>ADD ITEM</button></a>
+   
    {%for emply in employee_list  %}
    <tr>
   <td> {{emply.fullname}}  </td>
@@ -21,7 +40,11 @@
   <td>
    
    <a  href="{% url 'employee_update' emply.id  %}"  >  <button>Edit</button></a>
-   <a  href="">  <button>Delete</button></a>
+ 
+
+      <a  href="{% url 'employee_delete' emply.id %}">  <button>Delete</button></a>
+ 
+  
  
   </td>
 
