@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
 {% block content %}
 <style>
   button {
@@ -20,15 +20,21 @@
     cursor: pointer;
     font-size: 16px;
   }
-</style>
+  .back{
+   margin-top:20px
+
+
+  }
+</style> 
 
 <form method="post">
   {% csrf_token %}
-  {{ form }} <br>
+  {{ form|crispy }} <br>
   <button>Submit</button> 
-  <a href="{% url 'employe_list' %}">
-    <button>Back to list</button>
-  </a>
+  
 </form>
+<a href="{% url 'employe_list' %}">
+  <button class='back' >Back to list</button>
+</a>
 {% endblock %}
 
