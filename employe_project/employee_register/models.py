@@ -7,8 +7,6 @@ class position(models.Model):
            return self.title 
    
             
-
-
 class Employee(models.Model):
     fullname = models.CharField(max_length=50)
     emp_code = models.CharField(max_length=5)
