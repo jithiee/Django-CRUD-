@@ -13,6 +13,8 @@ def employee_list(request):
 
 # if  handle the GET request ========================
 def employee_form(request,id=0):
+    
+    print(id)
     if request.method =='GET':
             if id == 0:
               form = EmployeeForm()
@@ -36,13 +38,16 @@ def employee_form(request,id=0):
         else:   
             employeee = Employee.objects.get(pk=id)  
             form = EmployeeForm(request.POST,instance =  employeee)
+            
         if form.is_valid():
              form.save()
         return redirect('employe_list')
 
 # it used delecting employee record 
 def employee_delete(request, id):
+    print(id)
     employee = Employee.objects.get(pk=id)
+    print(employee)
     employee.delete()
     return redirect('employe_list')
 

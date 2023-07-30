@@ -37,14 +37,19 @@
       <td >full Name</td>
       <td>Mobile</td>
       <td>position</td>
-      <td></td>
+      
+  
+      <a  href="{%url 'employee_insert' %} "  style='margin-left:570px;'>  <button  class="add">ADD NEW</button></a>
+      <td>
+        
+      </td>
 
 
    </tr>
   </thead>
   <tbody>
     
-   <a  href="{%url 'employee_insert' %} "  >  <button  class="add">ADD ITEM</button></a>
+   
    
    {%for emply in employee_list  %}
 
@@ -57,6 +62,7 @@
 
    
    <a  href="{% url 'employee_update' emply.id  %}"  >  <button  class='edit'>EDIT</button></a>
+   
  
 
       <a  href="{% url 'employee_delete' emply.id %}">  <button class='del'  >Delete</button></a>
