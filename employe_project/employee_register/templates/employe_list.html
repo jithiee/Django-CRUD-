@@ -2,17 +2,30 @@
 
 {% block content %}
 <style>
-   .add {
-      background-color: blue;
-      padding: 10px 20px;
+.add{
+   background-color:pink;
+   color:blue;
+   font-weight:bold;
+   padding: 5px 50px;
+}
+    .edit{
+   
+      background-color:#75FF33;
+      padding: 5px 40px;
       border: none;
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: bold;
+      font-weight:bold;
+     
+    }
    
-   
+    .del{
+      background-color:#FF0000;
+      color:white;
+      padding: 5px 40px;
+      border: none;
+      font-weight:bold; 
     }
 
+    
 </style>
 
 
@@ -31,19 +44,22 @@
   </thead>
   <tbody>
     
-   <a  href="{%url 'employee_insert' %} "  class="add" >  <button>ADD ITEM</button></a>
+   <a  href="{%url 'employee_insert' %} "  >  <button  class="add">ADD ITEM</button></a>
    
    {%for emply in employee_list  %}
+
    <tr>
   <td> {{emply.fullname}}  </td>
   <td> {{emply.mobile}} </td>
   <td> {{emply.position}}</td>
+
   <td>
+
    
-   <a  href="{% url 'employee_update' emply.id  %}"  >  <button>Edit</button></a>
+   <a  href="{% url 'employee_update' emply.id  %}"  >  <button  class='edit'>EDIT</button></a>
  
 
-      <a  href="{% url 'employee_delete' emply.id %}">  <button>Delete</button></a>
+      <a  href="{% url 'employee_delete' emply.id %}">  <button class='del'  >Delete</button></a>
  
   
  

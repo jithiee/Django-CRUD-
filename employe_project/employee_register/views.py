@@ -31,6 +31,7 @@ def employee_form(request,id=0):
         # insert opration
         if id == 0:
             form = EmployeeForm(request.POST)
+            
             # update opration
         else:   
             employeee = Employee.objects.get(pk=id)  
@@ -44,3 +45,4 @@ def employee_delete(request, id):
     employee = Employee.objects.get(pk=id)
     employee.delete()
     return redirect('employe_list')
+
