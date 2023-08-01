@@ -33,14 +33,17 @@ def employee_form(request,id=0):
         # insert opration
         if id == 0:
             form = EmployeeForm(request.POST)
+            # print(form)
             
             # update opration
         else:   
             employeee = Employee.objects.get(pk=id)  
             form = EmployeeForm(request.POST,instance =  employeee)
+            print(form)
             
         if form.is_valid():
              form.save()
+          
         return redirect('employe_list')
 
 # it used delecting employee record 
