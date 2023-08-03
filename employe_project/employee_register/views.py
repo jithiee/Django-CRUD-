@@ -4,22 +4,22 @@ from . models import Employee
 # Create your views here.
 
 
-# retrive and disply all of the employee recordes
+
 def employee_list(request):
     context = {'employee_list':Employee.objects.all()}
     return render(request,'employe_list.html',context)
 
-# get and post request for insert and update opration
 
-# if  handle the GET request ========================
+
+
 def employee_form(request,id=0):
     
-    print(id)
+    # print(id)
     if request.method =='GET':
             if id == 0:
               form = EmployeeForm()
             else: 
-               employeee = Employee.objects.get(pk=id)  #pk  primarykey
+               employeee = Employee.objects.get(pk=id)  
                form = EmployeeForm(instance = employeee)
             
             emp_form={
@@ -28,29 +28,28 @@ def employee_form(request,id=0):
     
             return render(request,'employee_form.html',emp_form)
     
-   # else  handle the POST request  =========================
     else:
-        # insert opration
+   
         if id == 0:
             form = EmployeeForm(request.POST)
-            # print(form)
+            # print(form)u
             
-            # update opration
+            
         else:   
             employeee = Employee.objects.get(pk=id)  
             form = EmployeeForm(request.POST,instance =  employeee)
-            print(form)
+            # print(form)
             
         if form.is_valid():
              form.save()
           
         return redirect('employe_list')
 
-# it used delecting employee record 
+
 def employee_delete(request, id):
-    print(id)
-    employee = Employee.objects.get(pk=id)
-    print(employee)
+    # print(id)
+    employee = Employee.objects.get(pk=id) 
+    # print(employee)
     employee.delete()
     return redirect('employe_list')
 
